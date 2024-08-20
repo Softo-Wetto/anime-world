@@ -1,0 +1,80 @@
+/* Footer.css */
+
+.footer {
+  background-color: rgb(31, 24, 42); /* Match header dark variant background */
+  color: #f1c40f; /* Use the same text color as the header */
+  padding: 20px 0;
+  text-align: center;
+  border-top: 2px solid #444; /* Add a top border for separation */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+}
+
+.footer-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #f1c40f; /* Match the header text color */
+}
+
+.footer-section p, .footer-section ul {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  color: #ced4da; /* Lighten the text color for readability */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #f1c40f; /* Match header link color */
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  margin-top: 20px;
+  color: #f1c40f; /* Match header text color */
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.8em;
+  color: white;
+}
+
+.footer-bottom .socials {
+  margin-top: 10px;
+}
+
+.footer-bottom .socials a {
+  margin: 0 10px;
+  color: #f1c40f; /* Match header link color */
+  text-decoration: none;
+}
+
+.footer-bottom .socials a:hover {
+  text-decoration: underline;
+}
