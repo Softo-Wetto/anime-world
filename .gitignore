@@ -16,6 +16,8 @@
 /frontend/coverage
 
 # Environment variables
+.env
+
 /backend/.env
 /backend/.env.local
 /backend/.env.development.local
