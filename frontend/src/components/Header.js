@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Header.css'; // Import the CSS for additional styling
-import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap'; // Import Bootstrap components
+import './Header.css';
+import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,18 +27,24 @@ const Header = () => {
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="header">
-      <div className="container-fluid"> {/* Use Bootstrap's fluid container */}
-        <Navbar.Brand as={Link} to="/" className="text-warning">
-          Anime World
+      <div className="container-fluid">
+        <Navbar.Brand as={Link} to="/" className="text-warning brand-font">
+          AnimeWorld
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mx-auto"> {/* Center navigation links */}
-            <Nav.Link as={Link} to="/" className="text-warning">Home</Nav.Link>
-            <Nav.Link as={Link} to="/search" className="text-warning">Search</Nav.Link>
-            <Nav.Link as={Link} to="/about" className="text-warning">About</Nav.Link>
+          <Nav className="mx-auto nav-links">
+            <Nav.Link as={Link} to="/" className="text-warning nav-item">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/search" className="text-warning nav-item">
+              Search
+            </Nav.Link>
+            <Nav.Link as={Link} to="/about" className="text-warning nav-item">
+              About
+            </Nav.Link>
           </Nav>
-          <Nav className="ml-auto"> {/* Align user actions to the right */}
+          <Nav className="ml-auto">
             {isLoggedIn ? (
               <NavDropdown title={username} id="basic-nav-dropdown" className="text-warning">
                 <NavDropdown.Item as={Link} to="/profile">My Profile</NavDropdown.Item>
@@ -49,8 +55,12 @@ const Header = () => {
               </NavDropdown>
             ) : (
               <>
-                <Nav.Link as={Link} to="/login" className="text-warning">Login</Nav.Link>
-                <Nav.Link as={Link} to="/register" className="text-warning">Register</Nav.Link>
+                <Nav.Link as={Link} to="/login" className="text-warning nav-item">
+                  Login
+                </Nav.Link>
+                <Nav.Link as={Link} to="/register" className="text-warning nav-item">
+                  Register
+                </Nav.Link>
               </>
             )}
           </Nav>

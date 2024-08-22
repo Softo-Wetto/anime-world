@@ -19,7 +19,7 @@ const ProfilePage = () => {
       }
 
       try {
-        const response = await axios.get('http://localhost:5000/api/users/profile', {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/users/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -36,8 +36,8 @@ const ProfilePage = () => {
     fetchUserInfo();
   }, [navigate]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <div className="status-message"><p>Loading...</p></div>;
+  if (error) return <div className="status-message"><p>Error loading data: {error.message}</p></div>;
 
   const userAvatar = userInfo.avatar || `https://ui-avatars.com/api/?name=${userInfo.username}&background=333&color=f1c40f&size=128`;
 
@@ -56,6 +56,7 @@ const ProfilePage = () => {
       </div>
       <div className="profile-actions">
         <Link to="/bookmarks" className="bookmark-link btn">Go to Bookmarks</Link>
+        <Link to="/favorites" className="favorites-link btn btn-secondary ml-2">Favorite Characters</Link>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const FavoriteCharactersPage = () => {
         const fetchFavorites = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:5000/api/favorites', {
+                const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/favorites`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -29,7 +29,7 @@ const FavoriteCharactersPage = () => {
     }, []);
 
     if (loading) return <div className="status-message"><p>Loading...</p></div>;
-    if (error) return <p>{error}</p>;
+    if (error) return <div className="status-message"><p>Error loading data: {error.message}</p></div>;
 
     return (
         <div className="favorite-characters-page">

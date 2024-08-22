@@ -81,10 +81,15 @@ const AnimeDetailsPage = () => {
       setBookmarkMessage('Please log in to bookmark an anime.');
       return;
     }
+
+    if (!anime) {
+      setBookmarkMessage('Anime data is not available.');
+      return;
+    }
   
     try {
       await axios.post(
-        'http://localhost:5000/api/bookmarks/add',
+        `${process.env.REACT_APP_API_BASE_URL}/api/bookmarks/add`,
         {
           animeId: anime.mal_id,
           title: anime.title,
@@ -105,7 +110,7 @@ const AnimeDetailsPage = () => {
         setBookmarkMessage('Failed to bookmark anime. Please try again later.');
       }
     }
-  };  
+  };
 
   const handleCharacterClick = (characterId) => {
     const token = localStorage.getItem('token');
@@ -117,15 +122,6 @@ const AnimeDetailsPage = () => {
     // If the user is authenticated, navigate to the character's details page
     window.location.href = `/character/${characterId}`;
   };
-
-  if (loading) return <div className="status-message"><p>Loading...</p></div>;
-  if (error) {
-    if (retryCount < 3) {
-      return <div className="status-message"><p>Something went wrong. Retrying...</p></div>;
-    } else {
-      return <div className="status-message"><p>{error}</p></div>;
-    }
-  }
 
   if (loading) return <div className="status-message"><p>Loading...</p></div>;
   if (error) {

@@ -35,7 +35,7 @@ const CharacterDetailsPage = () => {
         const checkIfFavorite = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`http://localhost:5000/api/favorites`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/favorites`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -60,14 +60,14 @@ const CharacterDetailsPage = () => {
         try {
             const token = localStorage.getItem('token');
             if (isFavorite) {
-                await axios.delete(`http://localhost:5000/api/favorites/remove/${id}`, {
+                await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/favorites/remove/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 });
                 setIsFavorite(false);
             } else {
-                await axios.post(`http://localhost:5000/api/favorites/add`, {
+                await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/favorites/add`, {
                     characterId: id,
                     characterName: character.name,
                     imageUrl: character.images.jpg.image_url,
@@ -83,7 +83,6 @@ const CharacterDetailsPage = () => {
             setError('Failed to update favorite status. Please try again later.');
         }
     };
-    
 
     const handleEffectChange = (e) => {
         const value = e.target.value;
@@ -114,7 +113,7 @@ const CharacterDetailsPage = () => {
 
             for (let i = 1; i <= imageCount; i++) {
                 const response = await axios.post(
-                    'http://localhost:5000/api/image/download',
+                    `${process.env.REACT_APP_API_BASE_URL}/api/image/download`,
                     {
                         url: imageUrl,
                         resolution,

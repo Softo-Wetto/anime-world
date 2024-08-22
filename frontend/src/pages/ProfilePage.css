@@ -51,22 +51,26 @@
   color: #f1c40f;
 }
 
-/* Profile Actions */
-.profile-actions {
-  text-align: center;
-}
-
-.bookmark-link.btn {
-  background-color: #f1c40f;
-  color: #333;
+.bookmark-link.btn, .favorites-link.btn {
+  background-color: #f39c12;
+  color: #2c3e50;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 25px;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Roboto', sans-serif; /* Consistent font */
+  font-weight: 600;
+  margin: 0 10px; /* Add horizontal margin for spacing */
 }
 
-.bookmark-link.btn:hover {
-  background-color: #e2b607;
+.bookmark-link.btn:hover, .favorites-link.btn:hover {
+  background-color: #e67e22; /* Slightly darker on hover */
   color: #fff;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
 }

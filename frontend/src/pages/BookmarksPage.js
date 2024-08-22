@@ -13,7 +13,7 @@ const BookmarksPage = () => {
       const token = localStorage.getItem('token');
 
       try {
-        const response = await axios.get('http://localhost:5000/api/bookmarks', {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/bookmarks`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -33,7 +33,7 @@ const BookmarksPage = () => {
     const token = localStorage.getItem('token');
 
     try {
-      await axios.delete(`http://localhost:5000/api/bookmarks/remove/${animeId}`, {
+      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/bookmarks/remove/${animeId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -45,8 +45,8 @@ const BookmarksPage = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <div className="status-message"><p>Loading...</p></div>;
+  if (error) return <div className="status-message"><p>Error loading data: {error.message}</p></div>;
 
   return (
     <div className="bookmarks-page">
