@@ -7,10 +7,6 @@
 **/package-lock.json
 **/yarn.lock
 
-# Build outputs
-/backend/build
-/frontend/build
-
 # Testing coverage outputs
 /backend/coverage
 /frontend/coverage
