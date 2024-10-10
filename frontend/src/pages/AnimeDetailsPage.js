@@ -58,7 +58,7 @@ const AnimeDetailsPage = () => {
           setRetryCount(retryCount + 1);
           setTimeout(() => {
             fetchAnimeDetails();
-          }, 3000);
+          }, Math.pow(2, retryCount) * 1000);
         } else {
           setError('Too many requests. Please wait a moment and try again.');
         }
